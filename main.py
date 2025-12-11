@@ -37,7 +37,7 @@ def need_to_move(lisp_reference: str) -> int:
         return -1
 
     if len(lisp_reference) % 2 != 0:
-        return 0
+        return -1
 
     if any(ch not in "()" for ch in lisp_reference):
         return -1
