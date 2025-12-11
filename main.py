@@ -56,8 +56,47 @@ def need_to_move(lisp_reference: str) -> int:
 
 
 def main():
-    """Основной цикл программы."""
-    print("Программа запущена")
+    """
+    Основной цикл программы.
+    Позволяет пользователю повторно вызывать функции.
+    """
+    while True:
+        print("\nВыберите действие:")
+        print("1 — проверить строку на ПСП")
+        print("2 — вычислить минимальные изменения")
+        print("0 — выход")
+
+        choice = input("Ваш выбор: ").strip()
+
+        if choice == "0":
+            print("Программа завершена.")
+            break
+
+        if choice not in {"1", "2"}:
+            print("Ошибка: выберите 0, 1 или 2.")
+            continue
+
+        user_str = input("Введите строку из скобок: ").strip()
+        
+        if not user_str:
+            print("Ошибка: пустая строка!")
+            continue
+
+        if choice == "1":
+            result = is_cbs(user_str)
+            if result == 1:
+                print("Строка является ПСП.")
+            elif result == 0:
+                print("Строка НЕ является ПСП.")
+            else:
+                print("Ошибка: некорректная строка.")
+
+        elif choice == "2":
+            result = need_to_move(user_str)
+            if result >= 0:
+                print(f"Минимальное количество перемещений: {result}")
+            else:
+                print("Ошибка: некорректная строка.")
 
 
 if __name__ == "__main__":
