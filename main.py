@@ -36,13 +36,13 @@ def need_to_move(lisp_reference: str) -> int:
     if not isinstance(lisp_reference, str):
         return -1
 
+    if len(lisp_reference) % 2 != 0:
+        return 0
+
     if any(ch not in "()" for ch in lisp_reference):
         return -1
 
     if is_cbs(lisp_reference) == 1:
-        return 0
-    
-    if len(lisp_reference) % 2 != 0:
         return 0
 
     balance = 0
